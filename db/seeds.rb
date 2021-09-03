@@ -8,7 +8,22 @@
 
 password = "password"
 
-User.create!(email: "test1@example.com", password: password)
-User.create!(email: "test2@example.com", password: password)
+user1 = User.create!(email: "test1@example.com", password: password)
+user2 = User.create!(email: "test2@example.com", password: password)
+user3 = User.create!(email: "test3@example.com", password: password)
+user4 = User.create!(email: "test4@example.com", password: password)
+
+user1.posts.create!(content: "Javascript", status: "public")
+user1.posts.create!(content: "PHP", status: "public")
+user1.posts.create!(content: "Ruby on Rails", status: "private")
+user2.posts.create!(content: "ラーメン", status: "public")
+user2.posts.create!(content: "カツ丼", status: "private")
+user2.posts.create!(content: "きなこもち", status: "private")
+user3.posts.create!(content: "ドラクエ", status: "public")
+user3.posts.create!(content: "ポケモン", status: "private")
+user3.posts.create!(content: "逆転裁判", status: "public")
+user4.posts.create!(content: "半沢", status: "private")
+user4.posts.create!(content: "大和田", status: "private")
+user4.posts.create!(content: "伊佐山", status: "private")
 
 puts "ユーザーの初期データインポートに成功しました。"

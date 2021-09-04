@@ -14,6 +14,7 @@
         <%= "【ログイン中のアドレス】#{current_user.email}" %>
         <%= link_to "新規投稿", new_post_path %>
         <%= link_to "投稿一覧", root_path %>
+        <%= link_to "ユーザー一覧", users_path %>
         <%= link_to "アカウント編集", edit_user_registration_path %>
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
       <% else %>

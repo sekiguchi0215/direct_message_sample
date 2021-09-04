@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.order(:created_at)
+    @posts = Post.where(status: "public")
   end
 
   def new

@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :set_post, only: %i[edit update destroy]
+
   def index
     @posts = Post.where(status: "public")
   end
@@ -17,17 +19,14 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post = Post.find(params[:id])
   end
 
   def update
-    post = Post.find(params[:id])
-    post.update!(post_params)
-    redirect_to post
+    @post.update!(post_params)
+    redirect_to @post
   end
 
   def destroy
-    @post = Post.find(params[:id])
     @post.destroy!
     redirect_to root_path
   end
@@ -36,5 +35,9 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:content, :status)
+  end
+
+  def set_post
+    @post = current_user.posts.find_by(id: params[:id])
   end
 end

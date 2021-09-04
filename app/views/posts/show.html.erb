@@ -1,6 +1,7 @@
 <h1>投稿詳細</h1>
 <p>【メールアドレス】<%= @post.user.email %></p>
 <p>【内容】<%= @post.content %></p>
+<p>【公開 / 非公開】<%= @post.status %></p>
 <p>【作成日時】<%= l @post.created_at %></p>
 <p>
   <%= link_to "編集", edit_post_path(@post) %>

@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     @currentUserEntry = Entry.where(user_id: current_user.id)
     @userEntry = Entry.where(user_id: @user.id)
 
-    unless @user.id == current_user.index
+    unless @user.id == current_user.id
       @currentUserEntry.each do |current_user|
         @userEntry.each do |user|
           if current_user.room_id == user.room_id

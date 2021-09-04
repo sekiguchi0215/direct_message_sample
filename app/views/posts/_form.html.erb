@@ -3,7 +3,7 @@
   <%= f.text_field :content, required: true %>
   <%= f.radio_button :status, :public %>
   <%= f.label :status, "公開" %>
-  <%= f.radio_button :status, :privete %>
+  <%= f.radio_button :status, :private %>
   <%= f.label :status, "非公開" %>
   <%= f.submit "送信" %>
 <% end %>

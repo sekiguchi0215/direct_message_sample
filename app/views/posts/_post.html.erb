@@ -1,7 +1,11 @@
 <div>
   <p>【メールアドレス】<%= post.user.email %></p>
   <p>【内容】<%= post.content %></p>
-  <p>【公開 / 非公開】<%= post.status %></p>
+  <% if post.status == "public" %>
+    <p>【公開 / 非公開】<span style="color: limegreen;"><%= post.status %></span></p>
+  <% else %>
+    <p>【公開 / 非公開】<span style="color: red;"><%= post.status %></span></p>
+  <% end %>
   <p>
     <%= link_to "詳細", post %>
     <%= link_to "編集", edit_post_path(post) %>

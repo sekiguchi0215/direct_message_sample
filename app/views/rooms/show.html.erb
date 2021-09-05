@@ -2,18 +2,25 @@
   <h1>メッセージ</h1>
   <% @entries.each do |entry| %>
     <div>
-      <%= link_to "#{entry.user.email}さん", user_path(entry.user.id) %>
+      <%= link_to "#{entry.user.email} さん", user_path(entry.user.id) %>
     </div>
   <% end %>
-  <hr>
+  <hr style="margin: 30px 0 30px 0;">
   <div class="chats">
     <div class="chat">
       <% if @messages.present? %>
         <% @messages.each do |message| %>
           <div class="chat-box">
             <div class="chat-text">
-              <%= message.content %>
-              <%= message.created_at %>
+              <% if message.user_id == current_user.id  %>
+                <p style="color: limegreen;"><%= message.user.email %></p>
+                <p><strong><%= message.content %></strong></p>
+                <p style="color: grey;"><%= message.created_at.strftime("%Y-%m-%d %H:%M") %></p>
+              <% else %>
+                <p><%= message.user.email %></p>
+                <p><strong><%= message.content %></strong></p>
+                <p style="color: grey;"><%= message.created_at.strftime("%Y-%m-%d %H:%M") %></p>
+              <% end %>
             </div>
           </div>
         <% end %>
@@ -22,6 +29,7 @@
       <% end %>
     </div>
   </div>
+  <hr style="margin: 30px 0 30px 0;">
   <div class="posts">
     <%= form_with model: @message, local: true do |f| %>
       <%= f.text_field :content, placeholder: "メッセージを入力してください。" %>

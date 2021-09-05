@@ -1,32 +1,32 @@
 <div class="chat-room">
-  <h1>メッセージ</h1
-  <%= @entries.each do |entry| %>
-    <div class="user-name">
-  <%= link_to "#{entry.user.email}さん", user_path(entry.user.id) %>
-</div>
-<% end %>
-<hr>
-<div class="chats">
-  <div class="chat">
-    <% if @messages.present? %>
-      <% @messages.each do |message| %>
-        <div class="chat-box">
-          <div class="chat-text">
-            <%= message.content %>
-            <%= message.created_at %>
+  <h1>メッセージ</h1>
+  <% @entries.each do |entry| %>
+    <div>
+      <%= link_to "#{entry.user.email}さん", user_path(entry.user.id) %>
+    </div>
+  <% end %>
+  <hr>
+  <div class="chats">
+    <div class="chat">
+      <% if @messages.present? %>
+        <% @messages.each do |message| %>
+          <div class="chat-box">
+            <div class="chat-text">
+              <%= message.content %>
+              <%= message.created_at %>
+            </div>
           </div>
-        </div>
+        <% end %>
+      <% else %>
+        <p>メッセージはまだありません。</p>
       <% end %>
-    <% else %>
-      <p>メッセージはまだありません。</p>
+    </div>
+  </div>
+  <div class="posts">
+    <%= form_with model: @message, local: true do |f| %>
+      <%= f.text_field :content, placeholder: "メッセージを入力してください。" %>
+      <%= f.hidden_field :room_id, value: @room.id %>
+      <%= f.submit "送信する" %>
     <% end %>
   </div>
-</div>
-<div class="posts">
-  <%= form_with model: @message, local: true do |f| %>
-    <%= f.text_field :content, placeholder: "メッセージを入力してください。" %>
-    <%= f.hidden_field :room_id, value: @room.id %>
-    <%= f.submit "送信する" %>
-  <% end %>
-</div>
 </div>

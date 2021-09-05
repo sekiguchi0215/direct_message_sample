@@ -16,6 +16,9 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    if @post.status == "private" && @post.user_id != current_user.id
+      redirect_to root_path
+    end
   end
 
   def edit

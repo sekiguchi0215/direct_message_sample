@@ -1,6 +1,6 @@
-import consumer from "./consumer"
+import consumer from './consumer';
 
-consumer.subscriptions.create("RoomChannel", {
+const appRoom = consumer.subscriptions.create('RoomChannel', {
   connected() {
     // Called when the subscription is ready for use on the server
   },
@@ -10,10 +10,18 @@ consumer.subscriptions.create("RoomChannel", {
   },
 
   received(data) {
-    // Called when there's incoming data on the websocket for this channel
+    return alert(data['message']);
   },
 
-  speak: function() {
-    return this.perform('speak');
+  speak: function (message) {
+    return this.perform('speak', { message: message });
+  },
+});
+
+window.abbEventListener('keypress', function (e) {
+  if (e.keyCode === 13) {
+    appRoom.speak(e.target.value);
+    e.target.value = '';
+    e.preventDafault();
   }
 });

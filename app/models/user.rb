@@ -7,4 +7,6 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :rooms
   has_many :entries
+  has_many :group_users
+  has_many :groups, through: :group_users
 end

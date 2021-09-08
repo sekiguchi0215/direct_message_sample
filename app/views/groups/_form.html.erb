@@ -1,0 +1,11 @@
+<%= form_with model: @group, local: true do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name, required: true, placeholder: "グループ名を入力してください。" %>
+  <p>
+    <%= f.label "チャットメンバー" %>
+    <%= f.collection_check_boxes :user_ids, User.order(:created_at), :id, :email %>
+  </p>
+  <p>
+    <%= f.submit "送信" %>
+  </p>
+<% end %>

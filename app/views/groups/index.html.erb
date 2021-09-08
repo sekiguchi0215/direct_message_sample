@@ -1,0 +1,4 @@
+<h1>参加中のグループ一覧</h1>
+<% current_user.groups.each do |group| %>
+  <%= link_to "#{group.name}", group_path(group.id) %>
+<% end %>

@@ -16,6 +16,10 @@ class GroupsController < ApplicationController
   end
 
   def show
+    @users = @group.users.order(:created_at)
+    unless @users.include?(current_user)
+      redirect_to root_path
+    end
   end
 
   def edit

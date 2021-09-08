@@ -1,1 +1,12 @@
-<%= link_to "グループ情報を編集する", edit_group_path(@group) %>
+<h1><%= @group.name %></h1>
+<hr>
+<p style="color: limegreen;">グループメンバー</p>
+<% @users.each do |user| %>
+  <p>
+    <%= link_to "#{user.email}", user_path(user) %>
+  </p>
+<% end %>
+<p>
+  <%= link_to "グループ情報を編集する", edit_group_path(@group) %>
+</p>
+<hr>

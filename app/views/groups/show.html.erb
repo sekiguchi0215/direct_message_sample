@@ -33,7 +33,7 @@
 </div>
 <hr style="margin: 30px 0 30px 0;">
 <div class="posts">
-  <%= form_with url: group_messages_path, method: :post, local: true do |f| %>
+  <%= form_with model: @message, local: true do |f| %>
     <%= f.text_field :content, placeholder: "メッセージを入力してください。" %>
     <%= f.hidden_field :group_id, value: @group.id %>
     <%= f.submit "送信する" %>

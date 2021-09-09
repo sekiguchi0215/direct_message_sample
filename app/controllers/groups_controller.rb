@@ -20,6 +20,13 @@ class GroupsController < ApplicationController
     unless @users.include?(current_user)
       redirect_to root_path
     end
+    if GroupUser.where(user_id: current_user.id, group_id: @group.id).present?
+      @messages = @group.group_messages
+      @message = GroupMessage.new
+      @GroupUser = @group.group_users
+    else
+      redierct_back(fallback_location: root_path)
+    end
   end
 
   def edit

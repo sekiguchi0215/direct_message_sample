@@ -8,6 +8,12 @@ class GroupMessagesController < ApplicationController
     end
   end
 
+  def destroy
+    @message = GroupMessage.find(params[:id])
+    @message.destroy
+    redirect_to group_path(@message.group_id)
+  end
+
   private
 
   def message_params

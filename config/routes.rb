@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   root "posts#index"
   resources :posts
   resources :users, only: [:index, :show]
-  resources :messages, only: [:create]
+  resources :messages, only: [:create, :destroy]
   resources :rooms, only: [:index, :create, :show]
   resources :groups
-  resources :group_messages, only: [:create]
+  resources :group_messages, only: [:create, :destroy]
 end

@@ -8,9 +8,9 @@ class GroupMessagesController < ApplicationController
     end
   end
 
-  def destroy
+  def update
     @message = GroupMessage.find(params[:id])
-    @message.destroy
+    @message.update(is_valid: false)
     redirect_to group_path(@message.group_id)
   end
 

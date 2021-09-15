@@ -15,15 +15,23 @@
     <% @messages.each do |message| %>
       <div class="chat-box">
         <div class="chat-text">
-          <% if message.user_id == current_user.id  %>
-            <p style="color: limegreen;"><%= message.user.email %></p>
-            <p><strong><%= message.content %></strong></p>
-            <p style="color: grey;"><%= message.created_at.strftime("%Y-%m-%d %H:%M") %></p>
-            <%= link_to "削除", group_message_path(message), method: :delete, data: { confirm: "削除しますか？" } %>
+          <% if message.user_id == current_user.id %>
+            <% if message.is_valid == true %>
+              <p style="color: limegreen;"><%= message.user.email %></p>
+              <p><strong><%= message.content %></strong></p>
+              <p style="color: grey;"><%= message.created_at.strftime("%Y-%m-%d %H:%M") %></p>
+              <%= link_to "削除", group_message_path(message), method: :patch, data: { confirm: "削除しますか？" } %>
+            <% else %>
+              <p style="color: blue;">メッセージは削除されました。</p>
+            <% end %>
           <% else %>
-            <p><%= message.user.email %></p>
-            <p><strong><%= message.content %></strong></p>
-            <p style="color: grey;"><%= message.created_at.strftime("%Y-%m-%d %H:%M") %></p>
+            <% if message.is_valid == true %>
+              <p><%= message.user.email %></p>
+              <p><strong><%= message.content %></strong></p>
+              <p style="color: grey;"><%= message.created_at.strftime("%Y-%m-%d %H:%M") %></p>
+            <% else %>
+              <p style="color: grey;">メッセージは削除されました。</p>
+            <% end %>
           <% end %>
         </div>
       </div>

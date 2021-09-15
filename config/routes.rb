@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   root "posts#index"
   resources :posts
   resources :users, only: [:index, :show]
-  resources :messages, only: [:create, :destroy]
+  resources :messages, only: [:create, :update]
   resources :rooms, only: [:index, :create, :show]
   resources :groups
-  resources :group_messages, only: [:create, :destroy]
+  resources :group_messages, only: [:create, :update]
 end

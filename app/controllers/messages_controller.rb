@@ -8,9 +8,9 @@ class MessagesController < ApplicationController
     end
   end
 
-  def destroy
+  def update
     @message = Message.find(params[:id])
-    @message.destroy
+    @message.update(is_valid: false)
     redirect_to room_path(@message.room_id)
   end
 

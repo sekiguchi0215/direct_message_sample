@@ -3,6 +3,8 @@ class CreateNotifications < ActiveRecord::Migration[6.1]
     create_table :notifications do |t|
       t.integer :visiter_id
       t.integer :visited_id
+      t.integer :room_id
+      t.integer :group_id
       t.integer :message_id
       t.integer :group_message_id
       t.string :action

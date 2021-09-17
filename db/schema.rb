@@ -65,6 +65,8 @@ ActiveRecord::Schema.define(version: 2021_09_17_141206) do
   create_table "notifications", force: :cascade do |t|
     t.integer "visiter_id"
     t.integer "visited_id"
+    t.integer "room_id"
+    t.integer "group_id"
     t.integer "message_id"
     t.integer "group_message_id"
     t.string "action"

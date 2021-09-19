@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   resources :rooms, only: [:index, :create, :show]
   resources :groups
   resources :group_messages, only: [:create, :update]
+  resources :notifications, only: [:index]
 end

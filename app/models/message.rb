@@ -1,6 +1,7 @@
 class Message < ApplicationRecord
   belongs_to :user
   belongs_to :room
+  has_many :notifications
 
   validates :content, presence: true
 
@@ -13,6 +14,8 @@ class Message < ApplicationRecord
       )
 
       notification.save if notification.valid?
+    else
+      temp.update(checked: false)
     end
   end
 end

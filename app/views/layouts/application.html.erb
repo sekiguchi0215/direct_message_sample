@@ -14,7 +14,7 @@
         <%= link_to "【ログイン中のアドレス】#{current_user.email}", user_path(current_user) %>
         <%= link_to "新規投稿", new_post_path %>
         <%= link_to "投稿一覧", root_path %>
-        <% if notification_checked %>
+        <% if direct_message_notification_checked %>
           <strong>
             <%= link_to "通知", notifications_path %>
           </strong>

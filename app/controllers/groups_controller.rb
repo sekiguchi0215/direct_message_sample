@@ -17,6 +17,7 @@ class GroupsController < ApplicationController
 
   def show
     @users = @group.users.order(:created_at)
+    @group.check_group_message_notification(current_user)
     unless @users.include?(current_user)
       redirect_to root_path
     end

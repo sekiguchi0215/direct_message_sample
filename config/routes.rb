@@ -6,6 +6,10 @@ Rails.application.routes.draw do
   resources :messages, only: [:create, :update]
   resources :rooms, only: [:index, :create, :show]
   resources :groups do
+    member do
+      get :join
+      get :invitation
+    end
     get :join, on: :member
   end
   resources :group_messages, only: [:create, :update]

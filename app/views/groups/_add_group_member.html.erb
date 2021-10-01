@@ -1,5 +1,5 @@
 <%= form_with model: @user, url: invitation_group_path(@group), method: :post, local: true do |f|  %>
   <%= f.label "招待するメンバー" %>
-  <%= f.collection_select :user_id, User.order(:created_at), :id, :email %>
+  <%= f.collection_select :user_id, @other_users, :id, :email %>
   <%= f.submit "招待を送る" %>
 <% end %>

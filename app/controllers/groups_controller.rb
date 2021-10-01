@@ -19,7 +19,7 @@ class GroupsController < ApplicationController
     @users = @group.users.order(:created_at)
     @group.check_group_message_notification(current_user)
     group_user_ids = GroupUser.where(group_id: @group.id).pluck(:user_id)
-    @other_users = User.where.not(user_id: group_user_ids)
+    @other_users = User.where.not(id: group_user_ids)
     unless @users.include?(current_user)
       redirect_to root_path
     end

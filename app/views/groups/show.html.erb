@@ -9,6 +9,9 @@
 <p>
   <%= link_to "グループ情報を編集する", edit_group_path(@group) %>
 </p>
+<p>
+  <%= render "add_group_member" %>
+</p>
 <hr>
 <div>
   <% if @messages.present? %>

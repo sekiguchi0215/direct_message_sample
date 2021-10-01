@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :groups do
     member do
       get :join
-      get :invitation
+      post :invitation
     end
     get :join, on: :member
   end

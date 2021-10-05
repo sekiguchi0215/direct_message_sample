@@ -10,4 +10,10 @@
 <%= link_to "#{visitor.email}", user_path(visitor) %>
 さんからグループに招待されました。
 <%= link_to "参加する", join_group_path(notification.group_id) %>
+<% when "group_message" %>
+<p>
+  <%= link_to "#{visitor.email}", user_path(visitor) %>さんが
+  <%= link_to "グループ", group_path(notification.group_id) %>にメッセージを投稿しました。
+  <span style="color: grey;"><%= notification.created_at.strftime("%Y-%m-%d %H:%M") %></span>
+</p>
 <% end %>

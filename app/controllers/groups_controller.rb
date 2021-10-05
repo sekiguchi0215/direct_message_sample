@@ -47,7 +47,6 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id])
     @user = User.find_by(id: params[:user_id])
     if @group.group_invitation_notification(current_user, @user.id, @group.id)
-      binding.pry
       redirect_to request.referer
     end
   end

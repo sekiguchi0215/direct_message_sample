@@ -6,10 +6,12 @@
   <%= link_to "#{visitor.email}", user_path(visitor) %>
   さんからダイレクトメッセージが届きました。
 </p>
+<span style="color: grey;"><%= notification.created_at.strftime("%Y-%m-%d %H:%M") %></span>
 <% when "invitation" %>
 <%= link_to "#{visitor.email}", user_path(visitor) %>
 さんからグループに招待されました。
 <%= link_to "参加する", join_group_path(notification.group_id) %>
+<span style="color: grey;"><%= notification.created_at.strftime("%Y-%m-%d %H:%M") %></span>
 <% when "group_message" %>
 <p>
   <%= link_to "#{visitor.email}", user_path(visitor) %>さんが

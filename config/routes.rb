@@ -13,5 +13,5 @@ Rails.application.routes.draw do
     get :join, on: :member
   end
   resources :group_messages, only: [:create, :update]
-  resources :notifications, only: [:index]
+  resources :notifications, only: [:index, :update]
 end

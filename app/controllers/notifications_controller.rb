@@ -14,4 +14,10 @@ class NotificationsController < ApplicationController
     @notifications.map { |notification| notification.update(checked: true) }
     redirect_to request.referer
   end
+
+  def destroy
+    notification = Notification.find(params[:id])
+    notification.destroy
+    redirect_to request.referer
+  end
 end

@@ -15,7 +15,7 @@
   さんからグループに招待されました。
   <%= link_to "参加する", join_group_path(notification.group_id) %>
   <span style="color: grey;"><%= created_at %></span>
-  <%= link_to "既読にする", notification_path(notification), method: :patch, data: { confirm: "既読済みしますか？" } %>
+  <%= link_to "招待を削除する", notification_path(notification), method: :delete, data: { confirm: "削除しますか？" } %>
 </p>
 <% when "group_message" %>
 <p>

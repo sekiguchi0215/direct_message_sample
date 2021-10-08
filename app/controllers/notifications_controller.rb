@@ -10,7 +10,7 @@ class NotificationsController < ApplicationController
   end
 
   def update_all
-    @notifications = current_user.passive_notifications.unchecked
+    @notifications = current_user.passive_notifications.unchecked.where.not(action: "inivitation")
     @notifications.map { |notification| notification.update(checked: true) }
     redirect_to request.referer
   end

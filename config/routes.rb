@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     get :join, on: :member
   end
   resources :group_messages, only: [:create, :update]
-  resources :notifications, only: [:index, :update] do
+  resources :notifications, only: [:index, :update, :destroy] do
     member do
       patch :update_all
     end
